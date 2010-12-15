@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from random import random
 
 from django.conf import settings
-from django.db import models, IntegrityError
+from django.db import models
 from django.template.loader import render_to_string
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.contrib.sites.models import Site
@@ -19,12 +19,11 @@ send_mail = get_send_mail()
 class EmailAddressManager(models.Manager):
 
     def add_email(self, user, email):
-        try:
+        if not self.filter(user=user, email=email).exists():
             email_address = self.create(user=user, email=email)
             EmailConfirmation.objects.send_confirmation(email_address)
             return email_address
-        except IntegrityError:
-            return None
+        return None
 
     def get_primary(self, user):
         try:
