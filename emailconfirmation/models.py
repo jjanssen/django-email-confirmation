@@ -113,8 +113,11 @@ class EmailConfirmationManager(models.Manager):
         subject = "".join(subject.splitlines())
         message = render_to_string(
             "emailconfirmation/email_confirmation_message.txt", context)
-        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL,
-                  [email_address.email], priority="high")
+        message_html = render_to_string(
+            "emailconfirmation/email_confirmation_message.html", context)
+        msg = EmailMultiAlternatives(subject, message, settings.DEFAULT_FROM_EMAIL, [email_address.email])
+        msg.attach_alternative(message_html, 'text/html')
+        msg.send()
         return self.create(
             email_address=email_address,
             sent=datetime.now(),

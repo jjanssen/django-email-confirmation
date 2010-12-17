@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-16 17:45+0100\n"
-"PO-Revision-Date: 2010-12-16 17:47+0100\n"
+"POT-Creation-Date: 2010-12-17 16:34+0100\n"
+"PO-Revision-Date: 2010-12-17 16:34+0100\n"
 "Last-Translator: Patryk Zawadzki <patrys@pld-linux.org>\n"
 "Language-Team: pl_PL <patrys@mirumee.com>\n"
 "Language: \n"
@@ -26,24 +26,24 @@ msgstr ""
 msgid "e-mail addresses"
 msgstr ""
 
-#: models.py:146
+#: models.py:149
 msgid "e-mail confirmation"
 msgstr ""
 
-#: models.py:147
+#: models.py:150
 msgid "e-mail confirmations"
 msgstr ""
 
+#: templates/emailconfirmation/email_confirmation_message.html:1
 #: templates/emailconfirmation/email_confirmation_message.txt:1
 #, python-format
-msgid ""
-"User '%(user)s' at %(site_name)s has given this as an email address.\n"
-"\n"
-"To confirm this is correct, go to %(activate_url)s\n"
-msgstr ""
-"Użytkownik '%(user)s' serwisu %(site_name)s podał ten adres e-mail.\n"
-"\n"
-"Aby potwierdzić jego poprawność, przejdź do %(activate_url)s\n"
+msgid "User '%(user)s' at %(site_name)s has given this as an email address."
+msgstr "Użytkownik '%(user)s' serwisu %(site_name)s podał ten adres e-mail."
+
+#: templates/emailconfirmation/email_confirmation_message.html:3
+#: templates/emailconfirmation/email_confirmation_message.txt:3
+msgid "To confirm this is correct, click the link below:"
+msgstr "Aby potwierdzić jego prawidłowość, kliknij poniższy odnośnik:"
 
 #: templates/emailconfirmation/email_confirmation_subject.txt:1
 #, python-format
