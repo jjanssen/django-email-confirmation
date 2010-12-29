@@ -107,6 +107,7 @@ class EmailConfirmationManager(models.Manager):
             "activate_url": activate_url,
             "current_site": current_site,
             "confirmation_key": confirmation_key,
+            "MEDIA_URL": settings.MEDIA_URL,
         }
         subject = render_to_string(
             "emailconfirmation/email_confirmation_subject.txt", context)
