@@ -117,6 +117,12 @@ class EmailConfirmationManager(models.Manager):
             "emailconfirmation/email_confirmation_message.txt", context)
         message_html = render_to_string(
             "emailconfirmation/email_confirmation_message.html", context)
+        # close your eyes, something dirty comes:
+        try:
+            from premailer import premailer
+            message_html = premailer.transform(message_html, 'http://%s' % current_site.domain)
+        except ImportError:
+            pass
         msg = EmailMultiAlternatives(subject, message, settings.DEFAULT_FROM_EMAIL, [email_address.email])
         msg.attach_alternative(message_html, 'text/html')
         msg.send()
